@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Background Vimeo</title>
+<style>
+    /* Reset margin mặc định của trình duyệt */
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Container chứa video nền */
+    .video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Đẩy video xuống lớp dưới cùng */
+        pointer-events: none; /* Ngăn chặn click vào video */
+        overflow: hidden;
+    }
+
+    /* Kỹ thuật ép iframe luôn giữ tỉ lệ 16:9, bao phủ màn hình và căn giữa */
+    .video-background iframe {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100vw;
+        height: 56.25vw; /* Tỉ lệ 16:9 */
+        min-height: 100vh;
+        min-width: 177.77vh; 
+        transform: translate(-50%, -50%);
+    }
+
+    /* Container chứa nội dung trang web của bạn */
+    .content-wrapper {
+        position: relative;
+        z-index: 1; /* Nổi lên trên video */
+        padding: 20px;
+        color: white; 
+        text-align: center;
+        font-family: Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+
+    <div class="video-background">
+        <iframe 
+            src="https://player.vimeo.com/video/1196597572?background=1&autoplay=1&loop=1&muted=1" 
+            frameborder="0" 
+            allow="autoplay; fullscreen" 
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <div class="content-wrapper">
+        <h1></h1>
+        <p></p>
+    </div>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+
+</body>
+</html>
